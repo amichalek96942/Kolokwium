@@ -1,13 +1,15 @@
 #include <stdio.h>
 
-
 int text_processor(const char *str);
 
-// Funkcja główna do testów
 int main() {
-    const char *test_str = "AHJ3";
+    char test_str[100];  // Tablica na ciąg znaków - zakładamy maksymalnie 99 znaków + 1 na '\0'
+
+    printf("Podaj lancuch znakow do przetworzenia: ");
+    scanf("%99s", test_str); // Wczytanie ciągu znaków z wejścia - ograniczenie długości do 99 znaków
+
     int result = text_processor(test_str);
-    printf("Wynik dla testowego lancucha \"%s\": %d\n", test_str, result);
+    printf("Wynik dla podanego lancucha \"%s\": %d\n", test_str, result);
 
     return 0;
 }
@@ -19,7 +21,6 @@ int text_processor(const char *str) {
     // Przetwarzanie łańcucha znaków znak po znaku
     for (int i = 0; str[i] != '\0'; i++) {
         char ch = str[i]; // Aktualny znak
-
 
         if (ch >= 'A' && ch <= 'Z') {
             total += 10 * sign;
